@@ -338,17 +338,22 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-menu = st.radio(
-    "Navegação Principal",
-    [
-        "📊 PAINEL DE DADOS",
-        "📍 LOCAIS DE COLETA",
-        "🗑️ RESÍDUOS",
-        "🦟 OVOS, LARVAS E MOSQUITOS",
-        "🏥 CASOS DE DENGUE",
-        "🚨 OCORRÊNCIAS",
-        "📘 GUIA DA DENGUE"
-    ],
+# Exemplo de como deve estar no seu código:
+opcoes_menu = [
+    "📊 PAINEL DE DADOS",
+    "📍 LOCAIS DE COLETA",
+    "🗑️ RESÍDUOS",
+    "🦟 OVOS, LARVAS E MOSQUITOS",
+    "🏥 CASOS DE DENGUE",
+    "🚨 OCORRÊNCIAS",
+    "📘 GUIA DA DENGUE"
+]
+
+pagina = st.radio("Navegação", opcoes_menu, horizontal=True, label_visibility="collapsed")
+
+# E lá embaixo, nos ifs de cada tela, use exatamente a mesma string (ou "in"):
+if "LOCAIS DE COLETA" in pagina:
+    # código da tela de locais de coleta...
     horizontal=True,
     label_visibility="collapsed"
 )
