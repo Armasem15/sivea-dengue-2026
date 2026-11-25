@@ -338,7 +338,6 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Exemplo de como deve estar no seu código:
 opcoes_menu = [
     "📊 PAINEL DE DADOS",
     "📍 LOCAIS DE COLETA",
@@ -349,11 +348,9 @@ opcoes_menu = [
     "📘 GUIA DA DENGUE"
 ]
 
-pagina = st.radio("Navegação", opcoes_menu, horizontal=True, label_visibility="collapsed")
-
-# E lá embaixo, nos ifs de cada tela, use exatamente a mesma string (ou "in"):
-if "LOCAIS DE COLETA" in pagina:
-    # código da tela de locais de coleta...
+menu = st.radio(
+    "Navegação",
+    opcoes_menu,
     horizontal=True,
     label_visibility="collapsed"
 )
@@ -362,7 +359,6 @@ if "LOCAIS DE COLETA" in pagina:
 # 1. PAINEL DE DADOS (GRÁFICOS E OBSERVAÇÕES)
 # ==============================================================================
 if menu == "📊 PAINEL DE DADOS":
-    # Barra de filtro rápido no topo do painel
     bairros_set = set()
     for d in [df_locais, df_casos, df_ocorrencias]:
         if not d.empty and "bairro" in d.columns:
@@ -580,7 +576,7 @@ if menu == "📊 PAINEL DE DADOS":
 # ==============================================================================
 # 2. LOCAIS DE COLETA
 # ==============================================================================
-elif menu == "📍 Locais de Coleta":
+elif menu == "📍 LOCAIS DE COLETA":
     h1, h2 = st.columns([3, 1])
     with h1:
         st.markdown("""
